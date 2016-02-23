@@ -1,0 +1,48 @@
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping
+    https://raw.github.com/doctrine/doctrine2/master/doctrine-mapping.xsd">
+
+    <entity name="Jirro\Bundle\AccountBundle\Domain\Group" table="groups">
+        <indexes>
+        </indexes>
+
+        <unique-constraints>
+            <unique-constraint columns="code" name="code_idx" />
+            <unique-constraint columns="name" name="name_idx" />
+        </unique-constraints>
+
+        <lifecycle-callbacks>
+        </lifecycle-callbacks>
+
+        <id name="id" type="integer" column="id">
+            <generator strategy="AUTO" />
+            <sequence-generator sequence-name="group_seq" allocation-size="100" initial-value="1" />
+        </id>
+
+        <field name="code" column="code" type="string" length="10" unique="true" />
+        <field name="name" column="name" type="string" length="30" unique="true" />
+        <field name="description" column="description" type="text" nullable="true" />
+
+        <many-to-many field="users" target-entity="User" mapped-by="groups">
+            <join-table name="user_group">
+                <join-columns>
+                    <join-column name="user_id" referenced-column-name="id" unique="false" />
+                </join-columns>
+                <inverse-join-columns>
+                    <join-column name="group_id" referenced-column-name="id" unique="false" />
+                </inverse-join-columns>
+            </join-table>
+            <order-by>
+                <order-by-field name="username" direction="ASC" />
+            </order-by>
+        </many-to-many>
+
+        <one-to-many field="accountControls" target-entity="AccountControl" mapped-by="group">
+            <cascade>
+                <cascade-all />
+            </cascade>
+        </one-to-many>
+    </entity>
+
+</doctrine-mapping>

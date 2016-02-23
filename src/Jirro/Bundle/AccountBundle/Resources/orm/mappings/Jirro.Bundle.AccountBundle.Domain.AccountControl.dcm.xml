@@ -1,0 +1,52 @@
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping
+    https://raw.github.com/doctrine/doctrine2/master/doctrine-mapping.xsd">
+
+    <entity name="Jirro\Bundle\AccountBundle\Domain\AccountControl" table="account_control">
+        <indexes>
+            <index columns="user_id" name="user_idx" />
+            <index columns="group_id" name="group_idx" />
+            <index columns="resource_id" name="resource_idx" />
+        </indexes>
+
+        <unique-constraints>
+            <unique-constraint columns="user_id,resource_id,action" name="unique_user_idx" />
+            <unique-constraint columns="group_id,resource_id,action" name="unique_group_idx" />
+        </unique-constraints>
+
+        <lifecycle-callbacks>
+        </lifecycle-callbacks>
+
+        <id name="id" type="integer" column="id">
+            <generator strategy="AUTO" />
+            <sequence-generator sequence-name="account_control_seq" allocation-size="100" initial-value="1" />
+        </id>
+
+        <field name="action" column="action" type="string" length="50" />
+        <field name="authorized" column="authorized" type="boolean">
+            <options>
+                <option name="default">0</option>
+            </options>
+        </field>
+
+        <many-to-one field="user" target-entity="User" inversed-by="accountControls">
+            <order-by>
+                <order-by-field name="username" direction="ASC" />
+            </order-by>
+        </many-to-one>
+
+        <many-to-one field="group" target-entity="Group" inversed-by="accountControls">
+            <order-by>
+                <order-by-field name="code" direction="ASC" />
+            </order-by>
+        </many-to-one>
+
+        <many-to-one field="resource" target-entity="Resource" inversed-by="accountControls">
+            <order-by>
+                <order-by-field name="name" direction="ASC" />
+            </order-by>
+        </many-to-one>
+    </entity>
+
+</doctrine-mapping>

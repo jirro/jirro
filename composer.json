@@ -1,0 +1,61 @@
+{
+    "name": "jirro/jirro",
+    "type": "library",
+    "description": "The Jirro PHP Micro Framework",
+    "keywords": ["jirro", "php", "framework"],
+    "homepage": "https://github.com/jirro",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Rendy Eko Prastiyo",
+            "email": "rendyekoprastiyo@gmail.com",
+            "homepage": "http://github.com/rendyep",
+            "role": "Developer"
+        }
+    ],
+    "require": {
+        "php": ">=5.5.9",
+        "doctrine/dbal": "~2.5",
+        "doctrine/orm": "~2.5",
+        "league/container": "~2.0",
+        "league/flysystem": "~1.0",
+        "league/plates": "~3.1",
+        "league/route": "~2.0@RC",
+        "maximebf/debugbar": "~1.11",
+        "mouf/whoops-stackphp": "~1.0",
+        "stack/builder": "~1.0",
+        "stack/run": "~1.0",
+        "stack/session": "~1.0@dev",
+        "symfony/config": "~2.5|~3.0",
+        "symfony/validator": "~2.5|~3.0"
+    },
+    "replace": {
+        "jirro/auth": "self.version",
+        "jirro/bundle": "self.version",
+        "jirro/common": "self.version",
+        "jirro/dbal": "self.version",
+        "jirro/debug-bar": "self.version",
+        "jirro/file-system": "self.version",
+        "jirro/http": "self.version",
+        "jirro/kernel": "self.version",
+        "jirro/orm": "self.version",
+        "jirro/validator": "self.version",
+        "jirro/view": "self.version",
+        "jirro/account-bundle": "self.version",
+        "jirro/admin-bundle": "self.version",
+        "jirro/console-bundle": "self.version",
+        "jirro/front-bundle": "self.version",
+        "jirro/restful-bundle": "self.version",
+        "jirro/setup-bundle": "self.version"
+    },
+    "autoload": {
+        "psr-4": {
+            "Jirro\\": "src/Jirro/"
+        }
+    },
+    "extra": {
+        "branch-alias": {
+            "dev-master": "1.0-dev"
+        }
+    }
+}

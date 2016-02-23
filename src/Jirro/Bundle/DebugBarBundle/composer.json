@@ -1,0 +1,33 @@
+{
+    "name": "jirro/debug-bar",
+    "type": "library",
+    "description": "",
+    "keywords": [],
+    "homepage": "http://github.com/jirro",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Rendy Eko Prastiyo",
+            "email": "rendyekoprastiyo@gmail.com",
+            "homepage": "http://github.com/rendyep",
+            "role": "Developer"
+        }
+    ],
+    "require": {
+        "php": ">=5.5.9",
+        "jirro/dbal": "~1.0@dev",
+        "league/container": "~2.0",
+        "maximebf/debugbar": "~1.11"
+    },
+    "autoload": {
+        "psr-4": {
+            "Jirro\\Component\\DebugBar\\": ""
+        }
+    },
+    "minimum-stability": "dev",
+    "extra": {
+        "branch-alias": {
+            "dev-master": "1.0-dev"
+        }
+    }
+}

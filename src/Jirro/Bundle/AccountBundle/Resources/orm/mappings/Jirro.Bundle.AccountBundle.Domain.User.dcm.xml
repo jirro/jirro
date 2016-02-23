@@ -1,0 +1,57 @@
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping
+    https://raw.github.com/doctrine/doctrine2/master/doctrine-mapping.xsd">
+
+    <entity name="Jirro\Bundle\AccountBundle\Domain\User" table="users">
+        <indexes>
+        </indexes>
+
+        <unique-constraints>
+            <unique-constraint columns="email" name="email_idx" />
+            <unique-constraint columns="username" name="username_idx" />
+            <unique-constraint columns="activation_code" name="activation_code_idx" />
+        </unique-constraints>
+
+        <lifecycle-callbacks>
+            <lifecycle-callback type="prePersist" method="prePersist" />
+        </lifecycle-callbacks>
+
+        <id name="id" type="integer" column="id">
+            <generator strategy="AUTO" />
+            <sequence-generator sequence-name="user_seq" allocation-size="100" initial-value="1" />
+        </id>
+
+        <field name="email" column="email" type="string" length="30" unique="true" />
+        <field name="username" column="username" type="string" length="20" unique="true" />
+        <field name="password" column="password" type="string" length="128" />
+        <field name="token" column="token" type="string" length="128" nullable="true" />
+        <field name="state" column="state" type="smallint">
+            <options>
+                <option name="default">0</option>
+            </options>
+        </field>
+        <field name="activationCode" column="activation_code" type="string" length="128" nullable="true" unique="true" />
+        <field name="firstName" column="first_name" type="string" length="20" />
+        <field name="middleName" column="middle_name" type="string" length="20" nullable="true" />
+        <field name="lastName" column="last_name" type="string" length="20" />
+        <field name="created" column="created" type="datetime">
+            <options>
+                <option name="default">CURRENT_TIMESTAMP</option>
+            </options>
+        </field>
+
+        <many-to-many field="groups" target-entity="Group" inversed-by="users">
+            <order-by>
+                <order-by-field name="code" direction="ASC" />
+            </order-by>
+        </many-to-many>
+
+        <one-to-many field="accountControls" target-entity="AccountControl" mapped-by="user">
+            <cascade>
+                <cascade-all />
+            </cascade>
+        </one-to-many>
+    </entity>
+
+</doctrine-mapping>

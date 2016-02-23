@@ -1,0 +1,34 @@
+{
+    "name": "jirro/account",
+    "type": "library",
+    "description": "Jirro Account Component",
+    "keywords": [],
+    "homepage": "http://github.com/jirro",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Rendy Eko Prastiyo",
+            "email": "rendyekoprastiyo@gmail.com",
+            "homepage": "http://github.com/rendyep",
+            "role": "Developer"
+        }
+    ],
+    "require": {
+        "php": ">=5.5.9",
+        "doctrine/orm": "~2.5",
+        "jirro/account-bundle": "~1.0@dev",
+        "jirro/http": "~1.0@dev",
+        "league/container": "~2.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "Jirro\\Component\\Account\\": ""
+        }
+    },
+    "minimum-stability": "dev",
+    "extra": {
+        "branch-alias": {
+            "dev-master": "1.0-dev"
+        }
+    }
+}

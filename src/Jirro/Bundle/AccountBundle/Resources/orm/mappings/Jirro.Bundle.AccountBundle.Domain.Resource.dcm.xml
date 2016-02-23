@@ -1,0 +1,32 @@
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping
+    https://raw.github.com/doctrine/doctrine2/master/doctrine-mapping.xsd">
+
+    <entity name="Jirro\Bundle\AccountBundle\Domain\Resource" table="resources">
+        <indexes>
+        </indexes>
+
+        <unique-constraints>
+            <unique-constraint columns="name" name="name_idx" />
+        </unique-constraints>
+
+        <lifecycle-callbacks>
+        </lifecycle-callbacks>
+
+        <id name="id" type="integer" column="id">
+            <generator strategy="AUTO" />
+            <sequence-generator sequence-name="group_seq" allocation-size="100" initial-value="1" />
+        </id>
+
+        <field name="name" column="name" type="string" length="100" />
+        <field name="description" column="description" type="text" nullable="true" />
+
+        <one-to-many field="accountControls" target-entity="AccountControl" mapped-by="resource">
+            <cascade>
+                <cascade-all />
+            </cascade>
+        </one-to-many>
+    </entity>
+
+</doctrine-mapping>

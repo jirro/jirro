@@ -1,0 +1,32 @@
+{
+    "name": "jirro/dbal",
+    "type": "library",
+    "description": "Jirro DBAL Component",
+    "keywords": [],
+    "homepage": "http://github.com/jirro",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Rendy Eko Prastiyo",
+            "email": "rendyekoprastiyo@gmail.com",
+            "homepage": "http://github.com/rendyep",
+            "role": "Developer"
+        }
+    ],
+    "require": {
+        "php": ">=5.5.9",
+        "doctrine/dbal": "~2.5",
+        "league/container": "~2.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "Jirro\\Component\\DBAL\\": ""
+        }
+    },
+    "minimum-stability": "dev",
+    "extra": {
+        "branch-alias": {
+            "dev-master": "1.0-dev"
+        }
+    }
+}

@@ -1,0 +1,32 @@
+{
+    "name": "jirro/event",
+    "type": "library",
+    "description": "Jirro Event Component",
+    "keywords": [],
+    "homepage": "http://github.com/jirro",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Rendy Eko Prastiyo",
+            "email": "rendyekoprastiyo@gmail.com",
+            "homepage": "http://github.com/rendyep",
+            "role": "Developer"
+        }
+    ],
+    "require": {
+        "php": ">=5.5.9",
+        "league/container": "~2.0",
+        "league/event": "~2.1"
+    },
+    "autoload": {
+        "psr-4": {
+            "Jirro\\Component\\Event\\": ""
+        }
+    },
+    "minimum-stability": "dev",
+    "extra": {
+        "branch-alias": {
+            "dev-master": "1.0-dev"
+        }
+    }
+}
